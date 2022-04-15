@@ -1,3 +1,7 @@
+<?php
+session_start();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -27,7 +31,7 @@
     <link rel="stylesheet" href="css/style.css">
   </head>
   <body>
-    
+  <?php include('includes/header.php') ?>
 	  <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
 	    <div class="container">
 	      <a class="navbar-brand" href="index.php">Rent&nbsp; & &nbsp; Ride&nbsp; </a>
@@ -35,17 +39,7 @@
 	        <span class="oi oi-menu"></span> Menu
 	      </button>
 
-	      <div class="collapse navbar-collapse" id="ftco-nav">
-	        <ul class="navbar-nav ml-auto">
-          <li class="nav-item"><a href="index.php" class="nav-link">Home</a></li>
-	          <li class="nav-item active"><a href="about.php" class="nav-link">About</a></li>
-	          <li class="nav-item"><a href="services.php" class="nav-link">Services</a></li>
-	          <li class="nav-item"><a href="pricing.php" class="nav-link">Pricing</a></li>
-	         <!-- <li class="nav-item"><a href="cars.php" class="nav-link">Cars</a></li>-->
-	          <li class="nav-item"><a href="member-car-rent.php" class="nav-link">Earn By Your car</a></li>
-	          <li class="nav-item "><a href="contact.php" class="nav-link">Contact</a></li>
-	        </ul>
-	      </div>
+	     
 	    </div>
 	  </nav>
     <!-- END nav -->
