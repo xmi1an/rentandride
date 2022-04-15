@@ -41,7 +41,7 @@
 	          <li class="nav-item active"><a href="about.php" class="nav-link">About</a></li>
 	          <li class="nav-item"><a href="services.php" class="nav-link">Services</a></li>
 	          <li class="nav-item"><a href="pricing.php" class="nav-link">Pricing</a></li>
-	          <li class="nav-item"><a href="car.php" class="nav-link">Cars</a></li>
+	         <!-- <li class="nav-item"><a href="cars.php" class="nav-link">Cars</a></li>-->
 	          <li class="nav-item"><a href="member-car-rent.php" class="nav-link">Earn By Your car</a></li>
 	          <li class="nav-item "><a href="contact.php" class="nav-link">Contact</a></li>
 	        </ul>
