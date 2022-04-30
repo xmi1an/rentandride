@@ -46,9 +46,10 @@ include('includes/config.php');
   </section>
   <section class="ftco-section bg-light">
     <div class="container">
+   
       <div class="row">
         <?php
-        $city = $_GET['city'];
+           $city = $_GET['city'];
         $sql = "SELECT * FROM tbl_vehicle where v_city='$city'";
         $result = mysqli_query($conn, $sql);
 

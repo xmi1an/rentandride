@@ -63,7 +63,7 @@ session_start();
             <div class="icon d-flex align-items-center justify-content-center"><span class="flaticon-route"></span></div>
             <div class="text w-100">
               <h3 class="heading mb-2">Wedding Ceremony</h3>
-              <p>A small river named Duden flows by their place and supplies it with the necessary regelialia.</p>
+              <p>You can also book vehicle for wedding </p>
             </div>
           </div>
         </div>
@@ -72,7 +72,7 @@ session_start();
             <div class="icon d-flex align-items-center justify-content-center"><span class="flaticon-route"></span></div>
             <div class="text w-100">
               <h3 class="heading mb-2">City Transfer</h3>
-              <p>A small river named Duden flows by their place and supplies it with the necessary regelialia.</p>
+              <p>For going from one city to another</p>
             </div>
           </div>
         </div>
@@ -80,8 +80,8 @@ session_start();
           <div class="services services-2 w-100 text-center">
             <div class="icon d-flex align-items-center justify-content-center"><span class="flaticon-route"></span></div>
             <div class="text w-100">
-              <h3 class="heading mb-2">Airport Transfer</h3>
-              <p>A small river named Duden flows by their place and supplies it with the necessary regelialia.</p>
+              <h3 class="heading mb-2">Self drive</h3>
+              <p>You can drive car by yourself</p>
             </div>
           </div>
         </div>
@@ -90,7 +90,7 @@ session_start();
             <div class="icon d-flex align-items-center justify-content-center"><span class="flaticon-route"></span></div>
             <div class="text w-100">
               <h3 class="heading mb-2">Whole City Tour</h3>
-              <p>A small river named Duden flows by their place and supplies it with the necessary regelialia.</p>
+              <p>Explore new places</p>
             </div>
           </div>
         </div>
