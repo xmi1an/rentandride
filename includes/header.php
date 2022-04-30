@@ -10,6 +10,7 @@
 				<li class="nav-item"><a href="index.php" class="nav-link">Home</a></li>
 				<li class="nav-item"><a href="about.php" class="nav-link">About</a></li>
 				<li class="nav-item"><a href="services.php" class="nav-link">Services</a></li>
+				<li class="nav-item"><a href="member-car-rent.php" class="nav-link">Earn with us</a></li>
 				<li class="nav-item"><a href="pricing.php" class="nav-link">Pricing</a></li>
 				<li class="nav-item"><a href="contact.php" class="nav-link">Contact</a></li>
 				<?php if (isset($_SESSION['uid'])) : ?><li class="nav-item dropdown">

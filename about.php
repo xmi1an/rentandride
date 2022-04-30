@@ -56,8 +56,9 @@ session_start();
             <span class="subheading">About us</span>
             <h2 class="mb-4">Welcome to Carbook</h2>
 
-            <p>A small river named Duden flows by their place and supplies it with the necessary regelialia. It is a paradisematic country, in which roasted parts of sentences fly into your mouth.</p>
-            <p>On her way she met a copy. The copy warned the Little Blind Text, that where it came from it would have been rewritten a thousand times and everything that was left from its origin would be the word "and" and the Little Blind Text should turn around and return to its own, safe country. A small river named Duden flows by their place and supplies it with the necessary regelialia. It is a paradisematic country, in which roasted parts of sentences fly into your mouth.</p>
+            <p>Thank you</br>
+            for taking time to know more about us.</br> Our journey started, with the mission of making your travels easier wherever you are and wherever you are going.</p>
+            <p>Here we provide a varieties of cars which you can easily rent and enjoy your journey.We provide car with flexible rent and overall you get good user experience.</br>Not only this you can also earn with us by just simply giving your own vehicle on rent.We also provide full security of vehicle ,So come and join us and be part of our journey.</p>
             <p><a href="#" class="btn btn-primary py-3 px-4">Search Vehicle</a></p>
           </div>
         </div>

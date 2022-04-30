@@ -13,7 +13,9 @@ if (isset($_POST['submit'])) {
             window.location.href = 'index.php';
       </script>");
   } else {
-    echo "Invalid Details! Try Again";
+    echo ("<script> alert ('Invalid Details! Try Again');
+              window.location.href='login.php';
+              </script>");
     echo mysqli_error($conn);
   }
 
@@ -91,7 +93,10 @@ if (isset($_POST['submit'])) {
 
                 <div class="d-grid">
                   <button name="submit" class="btn btn-primary btn-login text-uppercase fw-bold" type="submit">Login</button>
-              </form>
+                  <div class="form-floating mb-3">
+                  
+                  
+                </form>
 
             </div>
           </div>

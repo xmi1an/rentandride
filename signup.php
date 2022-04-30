@@ -12,7 +12,7 @@ if (isset($_POST['submit'])) {
   $res = mysqli_query($conn, $sql);
 
   if ($res) {
-    echo ("<script> alert('Signup Successfull! Now you can Login');
+    echo ("<script> alert('Signup Successfull! *Now you can Login*');
             window.location.href = 'member-car-rent.php';
       </script>");
   } else {
@@ -107,6 +107,8 @@ if (isset($_POST['submit'])) {
 
                 <div class="d-grid">
                   <button class="btn btn-primary btn-login text-uppercase fw-bold" type="submit" name="submit">Signup</button>
+                  
+
                 </div>
               </form>
 
