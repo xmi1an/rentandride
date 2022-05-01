@@ -6,26 +6,26 @@ if (!isset($_SESSION['uid'])) {
 } else {
 
     //Code for updation
-    if (isset($_POST['update'])) {
-        $pid = intval($_GET['pid']);
+    if (isset($_POST['submitreq'])) {
+        // $pid = intval($_GET['pid']);
         //getting post values
         $vehibrand = $_POST['vehibrand'];
         $vehiname = $_POST['vehiname'];
-        $vehioverview =  $_POST['vehioverview'];
+        $vehioverview =  $_POST['voverview'];
         $vehifueltype =  $_POST['vehifueltype'];
         $vehirent =  $_POST['vehirent'];
         $vehicapicity = $_POST['vehiseatingcap'];
 
+        $query = "UPDATE tbl_vehicle SET v_brand = '$vehibrand', v_name = '$vehiname', v_overview = '$vehioverview', v_fueltype = '$vehifueltype', v_rent = '$vehirent', v_seatingcapacity = '$vehicapicity' ";
 
-        $query = "update tbl_vehicle set `v_brand`='$vehibrand', `v_name`='$vehiname, `v_overview`='$vehioverview', `v_rent`='$vehirent, `v_fueltype`='$vehiname, `v_seatingcapacity`='$vehicapicity";
-
-        $result = mysqli_query($con, $query);
+        $result = mysqli_query($conn, $query);
         if ($result) {
             echo '<script>alert("Car Record updated successfully.")</script>';
-            echo "<script>window.location.href='manage-phlebotomist.php'</script>";
-        } else {
-            echo "<script>alert('Something went wrong. Please try again.');</script>";
             echo "<script>window.location.href='mycars.php'</script>";
+        } else {
+            echo "<script>alert('$vehioverview');</script>";
+            echo (mysqli_error($conn));
+            // echo "<script>window.location.href='mycars.php'</script>";
         }
     }
 }
@@ -99,13 +99,11 @@ if (!isset($_SESSION['uid'])) {
                                             </div>
                                             <li class="list-group-item">Rent : ₹<?php echo $row['v_rent']; ?></li>
                                         </ul>
-
-                                        <button type="button" data-bs-toggle="modal" data-bs-target="#exampleModal" class="w-100 btn btn-lg btn-outline-primary">Edit Details</button>
+                                        <button type="button" data-bs-toggle="modal" data-bs-target="#exampleModal" class="w-100 btn btn-lg btn-outline-primary">Edit Details </button>
                                     </div>
                                 </div>
                             </div>
-                        <?php
-                    } ?>
+                        <?php } ?>
                         </div>
                     </div>
             </div>
@@ -122,82 +120,67 @@ if (!isset($_SESSION['uid'])) {
                     <h5 class="modal-title" id="exampleModalLabel">Edit Car Details</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <div class="modal-body">
-                    <form action="#" method="POST" class="form-horizontal" role="form">
-                        <div class="form-group">
-                            <label for="name" class="control-label">Vehicle Brand</label><br>
-                            <input type="text" class="form-control" name="vehibrand" id="name" placeholder="Suzuki, Honda, Volkswagen, etc... ">
-                        </div> <!-- form-group // -->
+                <?php
+                $sql = "SELECT * FROM tbl_vehicle where v_id= '1'";
+                $result = mysqli_query($conn, $sql);
+                while ($row = mysqli_fetch_assoc($result)) { ?>
+                    <div class="modal-body">
+                        <form action="" method="POST" class="form-horizontal" role="form">
+                            <div class="form-group">
+                                <label for="name" class="control-label">Vehicle Brand</label><br>
+                                <input type="text" class="form-control" name="vehibrand" id="name" value="<?php echo $row['v_brand']; ?>">
+                            </div> <!-- form-group // -->
 
-                        <div class="form-group">
-                            <label for="name" class="control-label">Vehicle Name</label>
-                            <input type="text" class="form-control" name="vehiname" id="name" placeholder="Baleno, WagonR, Scorpio, etc..">
-                        </div> <!-- form-group // -->
-                        <div class="form-group">
-                            <label for="name" class="control-label">Vehicle overview</label>
-                            <textarea type="text" placeholder="About Your Vehicle" class="form-control" name="vehioverview" id="name"> </textarea>
-                        </div> <!-- form-group // -->
-                        <div class="form-group">
-                            <label for="about" class="control-label">Vehicle Rent</label>
-                            <input type="number" class="form-control" name="vehirent" placeholder="Enter price per day"></textarea>
-                        </div> <!-- form-group // -->
-                        <div class="form-group">
-                            <label class="control-label">Vehicle Fueltype</label>
-                            <input type="text" class="form-control" name="vehifueltype" id="qty" placeholder="CNG, Petrol, Diesal Etc...">
-                        </div> <!-- form-group // -->
-                        <div class="form-group">
-                            <label class="control-label">Seating Capacity</label>
-                            <input type="number" class="form-control" name="vehiseatingcap" id="date_finish" placeholder="Number of seats in car">
-                        </div>
-
-                        <!-- form-group // -->
-
-                        <div class="input-group mb-3">
-                            <label class="input-group-text" for="inputGroupFile01">Image 1</label>
-                            <input name="vehiimg1" type="file" class="form-control" id="inputGroupFile01">
-                        </div>
-                        <div class="input-group mb-3">
-                            <label class="input-group-text" for="inputGroupFile01">Image 2</label>
-                            <input name="vehiimg2" type="file" class="form-control" id="inputGroupFile01">
-                        </div>
-                        <div class="input-group mb-3">
-                            <label class="input-group-text" for="inputGroupFile01">Image 3</label>
-                            <input name="vehiimg3" type="file" class="form-control" id="inputGroupFile01">
-                        </div>
-                        <div class="input-group mb-3">
-                            <label class="input-group-text" for="inputGroupFile01">Image 4</label>
-                            <input name="vehiimg4" type="file" class="form-control" id="inputGroupFile01">
-                        </div>
-
-                        <!-- <div class="form-group">
-                            <label class="control-label small" for="file_img">Image 2 (jpg/png)</label> <input type="file" name="vehiimg2">
-                        </div>
-                        <label class="control-label small" for="file_img">Image 3 (jpg/png):</label> <input type="file" name="vehiimg3">
-
-                        <div class="form-group">
-                            <label class="control-label small" for="file_img">Image 4 (jpg/png)</label> <input type="file" name="vehiimg4">
-                        </div> -->
-
-
-                </div> <!-- form-group // -->
-            </div>
-        </div> <!-- form-group // -->
-        <hr>
-        <div class="form-group">
-            <div class="form-group">
-                <button type="submit" name="submitreq" class="btn btn-primary">Submit Car Details</button>
+                            <div class="form-group">
+                                <label for="name" class="control-label">Vehicle Name</label>
+                                <input type="text" class="form-control" name="vehiname" id="name" value="<?php echo $row['v_name']; ?>">
+                            </div> <!-- form-group // -->
+                            <div class="form-group">
+                                <label for="name" class="control-label">Vehicle overview</label>
+                                <textarea type="text" placeholder="About Your Vehicle" class="form-control" name="voverview" id="name"><?php echo $row['v_overview']; ?> </textarea>
+                            </div> <!-- form-group // -->
+                            <div class="form-group">
+                                <label for="about" class="control-label">Vehicle Rent</label>
+                                <input type="number" class="form-control" name="vehirent" value="<?php echo $row['v_rent']; ?>"></textarea>
+                            </div> <!-- form-group // -->
+                            <div class="form-group">
+                                <label class="control-label">Vehicle Fueltype</label>
+                                <input type="text" class="form-control" name="vehifueltype" id="qty" value="<?php echo $row['v_fueltype']; ?>">
+                            </div> <!-- form-group // -->
+                            <div class="form-group">
+                                <label class="control-label">Seating Capacity</label>
+                                <input type="number" class="form-control" name="vehiseatingcap" id="date_finish" value="<?php echo $row['v_seatingcapacity']; ?>">
+                            </div>
+                            <!-- form-group // -->
+                            <div class="input-group mb-3">
+                                <label class="input-group-text" for="inputGroupFile01">Image 1</label>
+                                <input name="vehiimg1" type="file" class="form-control" id="inputGroupFile01">
+                            </div>
+                            <div class="input-group mb-3">
+                                <label class="input-group-text" for="inputGroupFile01">Image 2</label>
+                                <input name="vehiimg2" type="file" class="form-control" id="inputGroupFile01">
+                            </div>
+                            <div class="input-group mb-3">
+                                <label class="input-group-text" for="inputGroupFile01">Image 3</label>
+                                <input name="vehiimg3" type="file" class="form-control" id="inputGroupFile01">
+                            </div>
+                            <div class="input-group mb-3">
+                                <label class="input-group-text" for="inputGroupFile01">Image 4</label>
+                                <input name="vehiimg4" type="file" class="form-control" id="inputGroupFile01">
+                            </div>
+                        <?php } ?>
+                    </div> <!-- form-group // -->
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="submit" name="submitreq" class="btn btn-primary">Save changes</button>
+                    </div>
             </div>
         </div> <!-- form-group // -->
         </form>
     </div>
-    <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
     </div>
     </div>
     </div>
-    </div>
-
     <?php include('includes/footer.php'); ?>
     <!-- loader -->
     <div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px">
