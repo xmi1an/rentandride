@@ -33,6 +33,7 @@ include('includes/config.php');
   <!-- Nav -->
   <?php include('includes/header.php') ?>
   <!-- END nav -->
+
   <section class="hero-wrap hero-wrap-2 js-fullheight" style="background-image: url('images/bg_3.jpg');" data-stellar-background-ratio="0.5">
     <div class="overlay"></div>
     <div class="container">
@@ -44,12 +45,13 @@ include('includes/config.php');
       </div>
     </div>
   </section>
+
   <section class="ftco-section bg-light">
     <div class="container">
-   
+
       <div class="row">
         <?php
-           $city = $_GET['city'];
+        $city = $_GET['city'];
         $sql = "SELECT * FROM tbl_vehicle where v_city='$city'";
         $result = mysqli_query($conn, $sql);
 

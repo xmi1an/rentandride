@@ -98,7 +98,6 @@ if (!isset($_SESSION['uid'])) {
             <div class="panel-body">
 
               <form action="#" method="POST" class="form-horizontal" role="form">
-
                 <div class="form-group">
                   <label for="name" class="col-sm-3 control-label">Vehicle Brand</label><br>
                   <div class="col-sm-4">

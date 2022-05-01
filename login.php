@@ -9,6 +9,7 @@ if (isset($_POST['submit'])) {
   $rows = mysqli_fetch_array($query);
   if ($rows > 0) {
     $_SESSION['uid'] = $rows['u_id'];
+    $_SESSION['uname'] = $rows['u_name'];
     echo ("<script> alert('welcome to Rent and Ride');
             window.location.href = 'index.php';
       </script>");
@@ -94,9 +95,9 @@ if (isset($_POST['submit'])) {
                 <div class="d-grid">
                   <button name="submit" class="btn btn-primary btn-login text-uppercase fw-bold" type="submit">Login</button>
                   <div class="form-floating mb-3">
-                  
-                  
-                </form>
+
+
+              </form>
 
             </div>
           </div>

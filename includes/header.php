@@ -18,7 +18,7 @@
 							My Account
 						</a>
 						<ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-							<li><a class="dropdown-item" href="profile.php">Profile</a></li>
+							<li><a class="dropdown-item" href="userpanel\managecars.php">Dashboard</a></li>
 							<li>
 							<li><a class="dropdown-item" href="mycars.php">My Cars</a></li>
 							<li>
