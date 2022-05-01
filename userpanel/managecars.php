@@ -36,32 +36,29 @@ include('../includes/config.php');
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
 </head>
 
-<?php include('../includes/sidebar.php'); ?>
-
 <body class="hold-transition skin-blue sidebar-mini">
+
+  <?php include('../includes/sidebar.php'); ?>
+
   <div class="wrapper">
-
-
     <!-- Left side column. contains the logo and sidebar -->
-
 
     <!-- Content Wrapper. Contains page content -->
     <div class="content-wrapper">
       <!-- Content Header (Page header) -->
       <section class="content-header">
         <h1 align="center">
-          <i class="fa fa-cab"></i>Booking
+          <i class="fa fa-cab"></i> Manage Cars
           <small></small>
         </h1>
       </section>
-
       <!-- Main content -->
       <section class="content">
         <div class="row">
           <div class="col-xs-12">
             <div class="box">
               <div class="box-header">
-                <h3 class="box-title"><i class="fa fa-cab"></i> Rental Data Table</h3><button type="button" class="btn btn-success btn-sm" style="margin-left: 2%" data-toggle="modal" data-target="#add">
+                <h3 class="box-title"><i class="fa fa-car"></i> Manage Cars </h3><button type="button" class="btn btn-success btn-sm" style="margin-left: 2%" data-toggle="modal" data-target="#add">
                   <i class="fa fa-plus"></i> Add
                 </button>
                 <div class="modal fade" id="add">
@@ -71,7 +68,7 @@ include('../includes/config.php');
                         <div class="modal-header">
                           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span></button>
-                          <h4 class="modal-title">Add Rental</h4>
+                          <h4 class="modal-title">Add Car Gallery</h4>
                         </div>
                         <div class="modal-body">
                           <div class="box box-primary">
@@ -80,41 +77,33 @@ include('../includes/config.php');
                             </div>
                             <div class="box-body">
                               <div class="form-group">
-                                <label for="exampleInputEmail1">Rental Date</label>
-                                <input type="date" class="form-control">
-                              </div>
-                              <div class="form-group">
-                                <label for="exampleInputEmail1">Rental Time</label>
-                                <input type="time" class="form-control" value="00:00 AM">
-                              </div>
-                              <div class="form-group">
-                                <label for="exampleInputEmail1">Return Date</label>
-                                <input type="date" class="form-control">
-                              </div>
-                              <div class="form-group">
-                                <label>Select Car Owner</label>
+                                <label>Select Car</label>
                                 <select class="form-control">
-                                  <option>Data</option>
-                                  <option>Data</option>
+                                  <option>Rusco</option>
+                                  <option>option 2</option>
                                 </select>
                               </div>
                               <div class="form-group">
-                                <label>Car</label>
-                                <select disabled="" class="form-control">
-                                  <option>Data</option>
-                                  <option>Data</option>
-                                </select>
-                              </div>
-                              <div class="form-group">
-                                <label>Select Costumer</label>
+                                <label>Select Model</label>
                                 <select class="form-control">
-                                  <option>Data</option>
-                                  <option>Data</option>
+                                  <option>Car 123-MVS</option>
+                                  <option>option 2</option>
                                 </select>
                               </div>
                               <div class="form-group">
-                                <label>Status</label>
-                                <input type="text" class="form-control" placeholder="Enter Rental Status">
+                                <label>Select Color</label>
+                                <select class="form-control">
+                                  <option>Red</option>
+                                  <option>option 2</option>
+                                </select>
+                              </div>
+                              <div class="form-group">
+                                <label for="exampleInputFile">Image input</label>
+                                <input type="file" id="exampleInputFile">
+                              </div>
+                              <div class="form-group">
+                                <label>Description</label>
+                                <textarea class="form-control" rows="3" placeholder="Enter ..."></textarea>
                               </div>
                             </div>
                           </div>
@@ -130,46 +119,49 @@ include('../includes/config.php');
                 </div>
                 <!-- /.modal -->
               </div>
+
               <!-- /.box-header -->
               <div class="box-body">
                 <table id="example1" class="table table-bordered table-striped">
                   <thead>
                     <tr style="background-color: #c5c5c5;">
-                      <th><i class="fa fa-calendar"></i> Rental Date</th>
-                      <th><i class="fa fa-calendar"></i> Return</th>
-
-                      <th><i class="fa fa-user"></i> Costumer</th>
-                      <th><i class="fa fa-clock-o"></i> Time</th>
-                      <th><i class="fa fa-heart"></i> licenseno</th>
-                      <th>licenseimg</th>
-                      <th>Action</th>
+                      <th style="width: 10%"><i class="fa fa-image"></i> Image</th>
+                      <th style="width: 35%"><i class="fa fa-list-alt"></i> Description</th>
+                      <th style="width: 20%"><i class="fa fa-car"></i> Car Name</th>
+                      <th style="width: 20%"><i class="fa fa-car"></i> Brand</th>
+                      <th style="width: 20%"><i class="fa fa-paint-brush"></i> Fuel type</th>
+                      <th style="width: 11.8%"> </th>
                     </tr>
                   </thead>
                   <tbody>
                     <tr>
-                      <td>Sept. 12, 2020</td>
-                      <td>10:00pm</td>
-                      <td>Dec. 12,2020</td>
-                      <td>Jericho Rosales</td>
-                      <td>Lamburgeny</td>
-                      <td>Zebbiana</td>
+                      <?php
+                      $userid = $_SESSION['uid'];
+                      $query = "select * from tbl_vehicle where user_id = '$userid' ";
+                      $result = mysqli_query($conn, $query);
+                      while ($row = mysqli_fetch_array($result)) {
+                      ?>
+                        <td><img src="../<?php echo ($row['v_image1']); ?>" class="img-square" alt="Car Image" style="width: 100%"></td>
+                        <td><?php echo ($row['v_overview']); ?></td>
+                        <td><?php echo ($row['v_name']); ?></td>
+                        <td><?php echo ($row['v_brand']); ?></td>
+                        <td><?php echo ($row['v_fueltype']); ?></td>
 
-                      <td align="center"><button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#edit"><i class="fa fa-pencil"></i></button> <button type="button" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i></button></td>
+
+                        <td align="center"><button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#edit"><i class="fa fa-pencil"></i></button> <button type="button" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i></button> <button type="button" style="background-color: #c3039e;" class="btn btn-sm"><i class="fa fa-eye" style="color: white"></i></button></td>
                     </tr>
-
+                  <?php } ?>
                   </tbody>
                   <tfoot>
                     <tr style="background-color: #c5c5c5;">
-                      <th>Rental Date</th>
-                      <th>Return</th>
-
-                      <th>Costumer</th>
-                      <th> Time</th>
-                      <th> licenseno</th>
-                      <th>licenseimg</th>
-                      <th>Action</th>
-
+                      <th>Image</th>
+                      <th>Description</th>
+                      <th>Car Name</th>
+                      <th>Model</th>
+                      <th>Color</th>
+                      <th> </th>
                     </tr>
+
                   </tfoot>
                 </table>
                 <div class="modal fade" id="edit">
@@ -179,7 +171,7 @@ include('../includes/config.php');
                         <div class="modal-header">
                           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span></button>
-                          <h4 class="modal-title">Update Rental</h4>
+                          <h4 class="modal-title">Update Car Gallery</h4>
                         </div>
                         <div class="modal-body">
                           <div class="box box-warning">
@@ -187,41 +179,33 @@ include('../includes/config.php');
                             </div>
                             <div class="box-body">
                               <div class="form-group">
-                                <label for="exampleInputEmail1">Rental Date</label>
-                                <input type="date" class="form-control">
-                              </div>
-                              <div class="form-group">
-                                <label for="exampleInputEmail1">Rental Time</label>
-                                <input type="time" class="form-control" value="00:00 AM">
-                              </div>
-                              <div class="form-group">
-                                <label for="exampleInputEmail1">Return Date</label>
-                                <input type="date" class="form-control">
-                              </div>
-                              <div class="form-group">
-                                <label>Select Car Owner</label>
+                                <label>Select Car</label>
                                 <select class="form-control">
-                                  <option>Data</option>
-                                  <option>Data</option>
+                                  <option>Rusco</option>
+                                  <option>option 2</option>
                                 </select>
                               </div>
                               <div class="form-group">
-                                <label>Car</label>
-                                <select disabled="" class="form-control">
-                                  <option>Data</option>
-                                  <option>Data</option>
-                                </select>
-                              </div>
-                              <div class="form-group">
-                                <label>Select Costumer</label>
+                                <label>Select Model</label>
                                 <select class="form-control">
-                                  <option>Data</option>
-                                  <option>Data</option>
+                                  <option>Car 123-MVS</option>
+                                  <option>option 2</option>
                                 </select>
                               </div>
                               <div class="form-group">
-                                <label>Status</label>
-                                <input type="text" class="form-control" placeholder="Enter Rental Status">
+                                <label>Select Color</label>
+                                <select class="form-control">
+                                  <option>Red</option>
+                                  <option>option 2</option>
+                                </select>
+                              </div>
+                              <div class="form-group">
+                                <label for="exampleInputFile">Image input</label>
+                                <input type="file" id="exampleInputFile">
+                              </div>
+                              <div class="form-group">
+                                <label>Description</label>
+                                <textarea class="form-control" rows="3" placeholder="Enter ..."></textarea>
                               </div>
                             </div>
                           </div>
