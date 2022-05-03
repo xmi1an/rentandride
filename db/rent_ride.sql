@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 14, 2022 at 02:02 PM
--- Server version: 10.4.22-MariaDB
--- PHP Version: 7.4.27
+-- Generation Time: May 03, 2022 at 07:29 AM
+-- Server version: 10.4.20-MariaDB
+-- PHP Version: 8.0.9
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -29,9 +29,17 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `tbl_admin` (
   `a_id` int(5) NOT NULL,
+  `name` varchar(20) NOT NULL,
   `a_username` varchar(20) NOT NULL,
   `a_password` varchar(35) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `tbl_admin`
+--
+
+INSERT INTO `tbl_admin` (`a_id`, `name`, `a_username`, `a_password`) VALUES
+(1, 'Lost Variables', 'tlv', '1234');
 
 -- --------------------------------------------------------
 
@@ -59,8 +67,17 @@ CREATE TABLE `tbl_contactus` (
   `c_id` int(11) NOT NULL,
   `c_email` varchar(30) NOT NULL,
   `c_name` varchar(30) NOT NULL,
-  `c_reason` varchar(50) NOT NULL
+  `c_reason` varchar(300) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `tbl_contactus`
+--
+
+INSERT INTO `tbl_contactus` (`c_id`, `c_email`, `c_name`, `c_reason`) VALUES
+(1, 'hitesh@gmail.com', 'Hitesh', 'Rain water flooding in. Need to take care of home.'),
+(2, 'anil@gmail.com', 'Anil', 'The ultimate productivity tool you have been waiti'),
+(3, 'jaydepi@gmail.com', 'Jaydeep', 'Came across a black cat when I stepped out of home.');
 
 -- --------------------------------------------------------
 
@@ -71,10 +88,19 @@ CREATE TABLE `tbl_contactus` (
 CREATE TABLE `tbl_testimonial` (
   `t_id` int(11) NOT NULL,
   `t_name` varchar(25) NOT NULL,
-  `t_feedback` varchar(70) NOT NULL,
+  `t_feedback` varchar(300) NOT NULL,
   `t_postingdate` date NOT NULL DEFAULT current_timestamp(),
   `t_status` varchar(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `tbl_testimonial`
+--
+
+INSERT INTO `tbl_testimonial` (`t_id`, `t_name`, `t_feedback`, `t_postingdate`, `t_status`) VALUES
+(2, 'Anil', 'Thanks for the great service. The service was excellent. Your company ', '2022-05-03', ''),
+(3, 'Jignesh', 'After using Rent&Ride my Journy skyrocketed! I am so pleased with this service. Thank You!', '2022-05-03', ''),
+(4, 'Adesh', 'Thanks for the great service. The service was excellent. Your company is truly upstanding and is behind its product 100%.Car Rent has completely surpassed our expectations. I am really satisfied with my Car Rent. Man, this thing is getting better and better as I learn more about it.', '2022-05-03', '');
 
 -- --------------------------------------------------------
 
@@ -98,7 +124,8 @@ CREATE TABLE `tbl_user` (
 --
 
 INSERT INTO `tbl_user` (`u_id`, `u_name`, `u_username`, `u_password`, `u_email`, `u_city`, `u_RegDate`, `u_UpdationDate`) VALUES
-(27, 'pankaj mehnat', 'killergopu', '1234', 'pankajwithgopu@gmail.com', 'ahemdabad', '2022-04-12 15:48:06', '2022-04-12 15:48:06');
+(27, 'Prakash Manat', 'killergopu', '1234', 'pankajwithgopu@gmail.com', 'ahemdabad', '2022-04-12 15:48:06', '2022-04-12 15:48:06'),
+(28, 'Hitesh Bhamat', 'hitubha', '1234', 'hakinep312@yncyjs.com', 'Himmatnagar', '2022-04-15 21:25:21', '2022-04-15 21:25:21');
 
 -- --------------------------------------------------------
 
@@ -108,6 +135,7 @@ INSERT INTO `tbl_user` (`u_id`, `u_name`, `u_username`, `u_password`, `u_email`,
 
 CREATE TABLE `tbl_vehicle` (
   `v_id` int(5) NOT NULL,
+  `user_id` varchar(4) NOT NULL,
   `v_brand` varchar(20) NOT NULL,
   `v_name` varchar(10) NOT NULL,
   `v_city` varchar(20) NOT NULL,
@@ -127,10 +155,9 @@ CREATE TABLE `tbl_vehicle` (
 -- Dumping data for table `tbl_vehicle`
 --
 
-INSERT INTO `tbl_vehicle` (`v_id`, `v_brand`, `v_name`, `v_city`, `v_overview`, `v_rent`, `v_fueltype`, `v_seatingcapacity`, `v_image1`, `v_image2`, `v_image3`, `v_image4`, `v_regdate`, `v_updationdate`) VALUES
-(1, 'Maruti', 'Swift', 'Idar', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec placerat, libero vel fermentum viverra, elit purus tincidunt urna, ac convallis est tel', 1000, 'Gas', 4, 'images\\vehicals\\baleno.jpg', '', '', '', '2022-04-11', '2022-04-11'),
-(2, 'Suzuki', 'WagonR', 'Idar', 'Good condition vehicle with best average @ decent price', 1000, 'CNG & Petr', 4, 'images\\vehicals\\swift.jpg', 'C:\\xampp\\htdocs\\rentride\\images\\image_3.jpg', 'C:\\xampp\\htdocs\\rentride\\images\\image_1.jpg', 'C:\\xampp\\htdocs\\rentride\\images\\image_2.jpg', '2022-04-13', '2022-04-13'),
-(3, 'Honda', 'Baleno', 'Indore', ' qsdf', 2000, '1500', 4, 'images\\vehicals\\wagonr.jpg', '', '', '', '2022-04-13', '2022-04-13');
+INSERT INTO `tbl_vehicle` (`v_id`, `user_id`, `v_brand`, `v_name`, `v_city`, `v_overview`, `v_rent`, `v_fueltype`, `v_seatingcapacity`, `v_image1`, `v_image2`, `v_image3`, `v_image4`, `v_regdate`, `v_updationdate`) VALUES
+(1, '28', 'Marutii', 'Swift', 'Idar', 'Very Good Condition ', 1000, 'Gas', 4, 'images\\vehicals\\baleno.jpg', '', '', '', '2022-04-11', '2022-04-11'),
+(3, '28', 'Maruti', 'WagonR', 'Indore', 'Very Good Condition ', 1000, 'Gas', 4, 'images\\vehicals\\wagonr.jpg', '', '', '', '2022-04-13', '2022-04-13');
 
 --
 -- Indexes for dumped tables
@@ -181,7 +208,7 @@ ALTER TABLE `tbl_vehicle`
 -- AUTO_INCREMENT for table `tbl_admin`
 --
 ALTER TABLE `tbl_admin`
-  MODIFY `a_id` int(5) NOT NULL AUTO_INCREMENT;
+  MODIFY `a_id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `tbl_booking`
@@ -193,19 +220,19 @@ ALTER TABLE `tbl_booking`
 -- AUTO_INCREMENT for table `tbl_contactus`
 --
 ALTER TABLE `tbl_contactus`
-  MODIFY `c_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `c_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `tbl_testimonial`
 --
 ALTER TABLE `tbl_testimonial`
-  MODIFY `t_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `t_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `tbl_user`
 --
 ALTER TABLE `tbl_user`
-  MODIFY `u_id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
+  MODIFY `u_id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
 
 --
 -- AUTO_INCREMENT for table `tbl_vehicle`

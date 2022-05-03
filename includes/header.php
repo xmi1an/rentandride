@@ -5,6 +5,8 @@
 			<span class="oi oi-menu"></span> Menu
 		</button>
 
+
+
 		<div class="collapse navbar-collapse" id="ftco-nav">
 			<ul class="navbar-nav ml-auto">
 				<li class="nav-item"><a href="index.php" class="nav-link">Home</a></li>
@@ -13,7 +15,9 @@
 				<li class="nav-item"><a href="member-car-rent.php" class="nav-link">Earn with us</a></li>
 				<li class="nav-item"><a href="pricing.php" class="nav-link">Pricing</a></li>
 				<li class="nav-item"><a href="contact.php" class="nav-link">Contact</a></li>
-				<?php if (isset($_SESSION['uid'])) : ?><li class="nav-item dropdown">
+
+				<?php if (isset($_SESSION['uid'])) : ?>
+					<li class="nav-item dropdown">
 						<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
 							My Account
 						</a>
@@ -24,6 +28,16 @@
 							<li>
 								<hr class="dropdown-divider">
 							</li>
+							<li><a class="dropdown-item" href="logout.php">Logout</a></li>
+						</ul>
+					</li>
+				<?php elseif (isset($_SESSION['aid'])) : ?>
+					<li class="nav-item dropdown">
+						<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+							Admin
+						</a>
+						<ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+							<li><a class="dropdown-item" href="admin\inbox.php">Dashboard</a></li>
 							<li><a class="dropdown-item" href="logout.php">Logout</a></li>
 						</ul>
 					</li>
