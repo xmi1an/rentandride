@@ -104,11 +104,7 @@ if (isset($_POST['submit'])) {
 
         </div>
       </div>
-      <div class="row justify-content-center">
-        <div class="col-md-12">
-          <div id="map" class="bg-white"></div>
-        </div>
-      </div>
+     
     </div>
   </section>
 
