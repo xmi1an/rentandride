@@ -29,24 +29,16 @@ if (isset($_POST['submit'])) {
   <title>Login-Rent And Ride</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
   <link href="https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700,800&display=swap" rel="stylesheet">
-
   <link rel="stylesheet" href="css/open-iconic-bootstrap.min.css">
   <link rel="stylesheet" href="css/animate.css">
-
   <link rel="stylesheet" href="css/owl.carousel.min.css">
   <link rel="stylesheet" href="css/owl.theme.default.min.css">
   <link rel="stylesheet" href="css/magnific-popup.css">
-
   <link rel="stylesheet" href="css/aos.css">
-
   <link rel="stylesheet" href="css/ionicons.min.css">
-
   <link rel="stylesheet" href="css/bootstrap-datepicker.css">
   <link rel="stylesheet" href="css/jquery.timepicker.css">
-
-
   <link rel="stylesheet" href="css/flaticon.css">
   <link rel="stylesheet" href="css/icomoon.css">
   <link rel="stylesheet" href="css/style.css">
@@ -107,19 +99,12 @@ if (isset($_POST['submit'])) {
 
                 <div class="d-grid">
                   <button class="btn btn-primary btn-login text-uppercase fw-bold" type="submit" name="submit">Signup</button>
-                  
-
                 </div>
               </form>
 
             </div>
           </div>
 
-        </div>
-      </div>
-      <div class="row justify-content-center">
-        <div class="col-md-12">
-          <div id="map" class="bg-white"></div>
         </div>
       </div>
     </div>
@@ -148,8 +133,6 @@ if (isset($_POST['submit'])) {
   <script src="js/bootstrap-datepicker.js"></script>
   <script src="js/jquery.timepicker.min.js"></script>
   <script src="js/scrollax.min.js"></script>
-  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
-  <script src="js/google-map.js"></script>
   <script src="js/main.js"></script>
 
 </body>
