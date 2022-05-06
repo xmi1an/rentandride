@@ -14,12 +14,13 @@ if (isset($_POST['submit'])) {
             window.location.href = 'index.php';
       </script>");
   } else {
-    echo ("<script> alert ('Invalid Details! Try Again');
-              window.location.href='login.php';
-              </script>");
+    echo ("
+    <script> 
+    alert ('Invalid Details! Try Again');
+    window.location.href='login.php';
+    </script>");
     echo mysqli_error($conn);
   }
-
   $conn->close();
 }
 ?>
@@ -81,40 +82,36 @@ if (isset($_POST['submit'])) {
               <div class="card-header mb-4 text-center">
                 <h4 class="">Login</h4>
               </div>
-              <form action="" method="POST">
+              <form action="" method="POST" name="myForm">
                 <div class="form-floating mb-3">
-                  <input type="text" name="uname" class="form-control" id="floatingPassword">
+                  <input type="text" name="uname" pattern="[a-zA-Z'-'\s]*" id="uname" class="form-control" id="floatingPassword">
                   <label for="floatingPassword">Username</label>
                 </div>
 
                 <div class="form-floating mb-3">
-                  <input type="password" name="password" class="form-control" id="floatingPassword">
+                  <input type="password" name="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Eight or more characters" id="password" class="form-control" id="floatingPassword">
                   <label for="floatingPassword">Password</label>
                 </div>
 
                 <div class="d-grid">
-                  <button name="submit" class="btn btn-primary btn-login text-uppercase fw-bold" type="submit">Login</button>
+                  <button name="submit" id="submit" onclick="validateForm()" class="btn btn-primary btn-login text-uppercase fw-bold" type="submit">Login</button>
                   <div class="form-floating mb-3">
-
-
               </form>
-
             </div>
           </div>
-
         </div>
       </div>
-
     </div>
   </section>
-
+  <script>
+    // validate form
+  </script>
   <?php include('includes/footer.php'); ?>
 
   <!-- loader -->
-  <div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px">
-      <circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee" />
-      <circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00" />
-    </svg></div>
+  <circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee" />
+  <circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00" />
+  </svg></div>
 
   <script src="js/jquery.min.js"></script>
   <script src="js/jquery-migrate-3.0.1.min.js"></script>

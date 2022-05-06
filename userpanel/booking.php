@@ -61,114 +61,50 @@ include('../includes/config.php');
           <div class="col-xs-12">
             <div class="box">
               <div class="box-header">
-                <h3 class="box-title"><i class="fa fa-cab"></i> Rental Data Table</h3><button type="button" class="btn btn-success btn-sm" style="margin-left: 2%" data-toggle="modal" data-target="#add">
-                  <i class="fa fa-plus"></i> Add
-                </button>
-                <div class="modal fade" id="add">
-                  <div class="modal-dialog">
-                    <form role="form">
-                      <div class="modal-content">
-                        <div class="modal-header">
-                          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span></button>
-                          <h4 class="modal-title">Add Rental</h4>
-                        </div>
-                        <div class="modal-body">
-                          <div class="box box-primary">
-                            <div class="box-header with-border">
-                              <h3 class="box-title">Fill In : </h3>
-                            </div>
-                            <div class="box-body">
-                              <div class="form-group">
-                                <label for="exampleInputEmail1">Rental Date</label>
-                                <input type="date" class="form-control">
-                              </div>
-                              <div class="form-group">
-                                <label for="exampleInputEmail1">Rental Time</label>
-                                <input type="time" class="form-control" value="00:00 AM">
-                              </div>
-                              <div class="form-group">
-                                <label for="exampleInputEmail1">Return Date</label>
-                                <input type="date" class="form-control">
-                              </div>
-                              <div class="form-group">
-                                <label>Select Car Owner</label>
-                                <select class="form-control">
-                                  <option>Data</option>
-                                  <option>Data</option>
-                                </select>
-                              </div>
-                              <div class="form-group">
-                                <label>Car</label>
-                                <select disabled="" class="form-control">
-                                  <option>Data</option>
-                                  <option>Data</option>
-                                </select>
-                              </div>
-                              <div class="form-group">
-                                <label>Select Costumer</label>
-                                <select class="form-control">
-                                  <option>Data</option>
-                                  <option>Data</option>
-                                </select>
-                              </div>
-                              <div class="form-group">
-                                <label>Status</label>
-                                <input type="text" class="form-control" placeholder="Enter Rental Status">
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                        <div class="modal-footer">
-                          <button type="button" class="btn btn-danger pull-left" data-dismiss="modal">Close</button>
-                          <button type="submit" class="btn btn-primary">Submit</button>
-                        </div>
-                      </div>
-                    </form>
-                  </div>
-                  <!-- /.modal-dialog -->
-                </div>
-                <!-- /.modal -->
+                <h3 class="box-title"><i class="fa fa-cab"></i> Rental Data Table</h3>
               </div>
               <!-- /.box-header -->
               <div class="box-body">
                 <table id="example1" class="table table-bordered table-striped">
                   <thead>
                     <tr style="background-color: #c5c5c5;">
-                      <th><i class="fa fa-calendar"></i> Rental Date</th>
-                      <th><i class="fa fa-calendar"></i> Return</th>
-
-                      <th><i class="fa fa-user"></i> Costumer</th>
-                      <th><i class="fa fa-clock-o"></i> Time</th>
-                      <th><i class="fa fa-heart"></i> licenseno</th>
-                      <th>licenseimg</th>
-                      <th>Action</th>
+                      <th><i class="fa fa-calendar"></i> Username</th>
+                      <th><i class="fa fa-calendar"></i> Car Name</th>
+                      <th><i class="fa fa-calendar"></i> From Date</th>
+                      <th><i class="fa fa-user"></i> To Date</th>
+                      <th><i class="fa fa-clock-o"></i> License No </th>
                     </tr>
                   </thead>
                   <tbody>
+                    <?php
+                    $query =  "SELECT * FROM tbl_vehicle where v_id = '3'";
+                    $query2 = "SELECT * FROM tbl_user where u_id = '28'";
+                    $query3 = "SELECT * FROM tbl_booking where v_id = '3'";
+
+                    $resultvehical = mysqli_query($conn, $query);
+                    $resultuser = mysqli_query($conn, $query2);
+                    $resultbooking = mysqli_query($conn, $query3);
+
+                    $row = mysqli_fetch_array($resultvehical);
+                    $row2 = mysqli_fetch_array($resultuser);
+                    $row3 = mysqli_fetch_array($resultbooking);
+                    ?>
                     <tr>
-                      <td>Sept. 12, 2020</td>
-                      <td>10:00pm</td>
-                      <td>Dec. 12,2020</td>
-                      <td>Jericho Rosales</td>
-                      <td>Lamburgeny</td>
-                      <td>Zebbiana</td>
-
-                      <td align="center"><button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#edit"><i class="fa fa-pencil"></i></button> <button type="button" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i></button></td>
+                      <td><?php echo $row2['u_name']; ?></td>
+                      <td><?php echo $row['v_name']; ?></td>
+                      <td><?php echo $row3['v_fromdate']; ?></td>
+                      <td><?php echo $row3['v_todate']; ?></td>
+                      <td><?php echo $row3['v_licenseno']; ?></td>
                     </tr>
-
+                    <?php  ?>
                   </tbody>
                   <tfoot>
                     <tr style="background-color: #c5c5c5;">
-                      <th>Rental Date</th>
-                      <th>Return</th>
-
-                      <th>Costumer</th>
-                      <th> Time</th>
-                      <th> licenseno</th>
-                      <th>licenseimg</th>
-                      <th>Action</th>
-
+                      <th><i class="fa fa-calendar"></i> Username</th>
+                      <th><i class="fa fa-calendar"></i> Car Name</th>
+                      <th><i class="fa fa-calendar"></i> From Date</th>
+                      <th><i class="fa fa-user"></i> To Date</th>
+                      <th><i class="fa fa-clock-o"></i> License No </th>
                     </tr>
                   </tfoot>
                 </table>

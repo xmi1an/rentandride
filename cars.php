@@ -57,7 +57,9 @@ include('includes/config.php');
 
         if (mysqli_num_rows($result) > 0) {
           // output data of each row
-          while ($row = mysqli_fetch_assoc($result)) { ?>
+          while ($row = mysqli_fetch_assoc($result)) {
+            $_SESSION['vid'] = $row['v_id'];
+        ?>
             <div class="col-md-4">
               <div class="car-wrap rounded ftco-animate">
                 <div class="img rounded d-flex align-items-end">
@@ -69,7 +71,12 @@ include('includes/config.php');
                     <span class="text-dark"><?php echo $row['v_name']; ?></span>
                     <p class="price ml-auto"><?php echo $row['v_rent']; ?> <span class="text-dark">/day</span></p>
                   </div>
-                  <p class="d-flex mb-0 d-block"><a data-bs-toggle="modal" data-bs-target="#myModal" class="btn btn-primary py-2 mr-1">Book now</a> <a href="car-single.php?car=<?php echo $row['v_id'];  ?>" class="btn btn-secondary py-2 ml-1">Details</a></p>
+                  <?php if (!isset($_SESSION['uid'])) {
+                    echo ("<a href='login.php' class='btn btn-primary py-2 mr-1'>Signin to Book</a>");
+                  } else { ?>
+                    <p class="d-flex mb-0 d-block"><a data-bs-toggle="modal" data-bs-target="#myModal" class="btn btn-primary py-2 mr-1">Book Now</a> <?php } ?>
+                    <a href="car-single.php?car=<?php echo $row['v_id'];  ?>" class="btn btn-secondary py-2 ml-1">Details</a>
+                    </p>
                 </div>
               </div>
             </div>
@@ -81,77 +88,79 @@ include('includes/config.php');
         ?>
 
       </div>
-      <!-- Pagination -->
-      <!-- <div class="row mt-5">
-        <div class="col text-center">
-          <div class="block-27">
-            <ul>
-              <li><a href="#">&lt;</a></li>
-              <li class="active"><span>1</span></li>
-              <li><a href="#">2</a></li>
-              <li><a href="#">3</a></li>
-              <li><a href="#">4</a></li>
-              <li><a href="#">5</a></li>
-              <li><a href="#">&gt;</a></li>
-            </ul>
-          </div>
-        </div>
-      </div> -->
+
     </div>
   </section>
   <?php include('includes/footer.php'); ?>
+  <!-- Insert Data -->
+  <?php
+  if (isset($_POST['submit'])) {
+    $uid = $_SESSION['uid'];
+    $vid = $_SESSION['vid'];
+    $username =  $_SESSION['uname'];
+    $pickpoint = $_POST['pickpoint'];
+    $droppoint = $_POST['droppoint'];
+    $pickdate = $_POST['pickdate'];
+    $dropdate = $_POST['dropdate'];
+    $picktime = $_POST['picktime'];
+    $license = $_POST['license'];
 
-  <!-- Modal -->
+    $sql = "INSERT INTO `tbl_booking`(`u_name`, `v_id`, `v_fromdate`, `v_todate`, `v_licenseno`) VALUES ('$username',
+      '$vid', '$pickdate', '$dropdate', '$license')";
+
+    if (mysqli_query($conn, $sql)) {
+      echo "<script>alert('Car Booked Successfully.')</script>";
+      echo "<script>window.location.href='cars.php?city=$city'</script>";
+    } else {
+      echo "<script>alert('Something went wrong.')</script>";
+    }
+  }
+  ?>
+
   <!-- The Modal -->
   <div class="modal" id="myModal">
     <div class="modal-dialog">
       <div class="modal-content">
-
         <!-- Modal Header -->
         <div class="modal-header">
           <h4 class="modal-title">Booking Details</h4>
           <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
         </div>
-
         <!-- Modal body -->
         <div class="modal-body">
-          <div class="form-group">
-            <label for="a" class="label">Pick-up location</label>
-            <input type="text" class="form-control" placeholder="City, Airport, Station, etc">
-          </div>
-          <div class="form-group">
-            <label for="" class="label">Drop-off location</label>
-            <input type="text" class="form-control" placeholder="City, Airport, Station, etc">
-          </div>
-          <div class="d-flex">
-            <div class="form-group mr-2">
-              <label for="" class="label">Pick-up date</label>
-              <input type="text" class="form-control" id="book_pick_date" placeholder="Date">
+          <form action="" method="post">
+            <div class="form-group">
+              <label for="a" class="label">Pick-up location</label>
+              <input type="text" name="pickpoint" class="form-control" placeholder="Airport, Station, etc">
             </div>
-            <div class="form-group ml-2">
-              <label for="" class="label">Drop-off date</label>
-              <input type="text" class="form-control" id="book_off_date" placeholder="Date">
+            <div class="form-group">
+              <label for="" class="label">Drop-off location</label>
+              <input type="text" name="droppoint" class="form-control" placeholder="Airport, Station, etc">
             </div>
-          </div>
-          <div class="form-group">
-            <label for="" class="label">Pick-up time</label>
-            <input type="text" class="form-control" id="time_pick" placeholder="Time">
-          </div>
-          <div class="form-group">
-            <label for="" class="label">License Number</label>
-            <input type="text" class="form-control" id="license_no" placeholder="">
-          </div>
-          <div class="form-group">
-            <labehicle for="" class="label">license image</label>
-              <label class="control-label small" for="file_img">Image 1 (jpg/png):</label>
-              <input type="file" name="licenseimg">
-          </div>
-          <div class="form-group">
-            <input type="submit" value="Rent A Car Now" class="btn btn-secondary py-3 px-4" />
-          </div>
+            <div class="d-flex">
+              <div class="form-group mr-2">
+                <label for="" class="label">Pick-up date</label>
+                <input type="datetime" name="pickdate" class="form-control" id="book_pick_date" placeholder="Date">
+              </div>
+              <div class="form-group ml-2">
+                <label for="" class="label">Drop-off date</label>
+                <input type="datetime" name="dropdate" class="form-control" id="book_off_date" placeholder="Date">
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="" class="label">Pick-up time</label>
+              <input type="text" name="picktime" class="form-control" id="time_pick" placeholder="Time">
+            </div>
+            <div class="form-group">
+              <label for="" class="label">License Number</label>
+              <input type="text" name="license" class="form-control" id="license_no" placeholder="">
+            </div>
+
+            <div class="form-group">
+              <input type="submit" name="submit" value="Rent A Car Now" class="btn btn-secondary py-3 px-4" />
+            </div>
           </form>
         </div>
-
 
         <!-- Modal footer -->
         <div class="modal-footer">
@@ -161,8 +170,6 @@ include('includes/config.php');
       </div>
     </div>
   </div>
-
-
 
   <!-- loader -->
   <div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px">

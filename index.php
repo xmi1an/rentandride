@@ -113,7 +113,7 @@ session_start();
       <div class="row justify-content-center">
         <div class="col-md-12 heading-section text-center ftco-animate mb-5">
           <span class="subheading">What we offer</span>
-          <h2 class="mb-2">Feeatured Vehicles</h2>
+          <h2 class="mb-2">Featured Vehicles</h2>
         </div>
       </div>
       <div class="row">

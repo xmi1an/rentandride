@@ -11,7 +11,7 @@ if (isset($_POST['submit'])) {
     $_SESSION['aid'] = $rows['a_id'];
     $_SESSION['name'] = $rows['name'];
     echo ("<script> alert('Welcome to Admin');
-            window.location.href = 'costumer.php';
+            window.location.href = 'useraccount.php';
       </script>");
   } else {
     echo ("<script> alert ('Invalid Details! Try Again');
