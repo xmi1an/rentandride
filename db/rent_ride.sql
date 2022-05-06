@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 03, 2022 at 07:29 AM
+-- Generation Time: May 06, 2022 at 03:32 AM
 -- Server version: 10.4.20-MariaDB
 -- PHP Version: 8.0.9
 
@@ -51,11 +51,18 @@ CREATE TABLE `tbl_booking` (
   `b_id` int(5) NOT NULL,
   `u_name` varchar(25) NOT NULL,
   `v_id` int(11) NOT NULL,
-  `v_fromdate` date NOT NULL DEFAULT current_timestamp(),
-  `v_todate` date NOT NULL DEFAULT current_timestamp(),
-  `v_licenseno` int(16) NOT NULL,
+  `v_fromdate` varchar(120) NOT NULL,
+  `v_todate` varchar(120) CHARACTER SET latin1 NOT NULL,
+  `v_licenseno` varchar(16) NOT NULL,
   `v_licenseimg` longblob NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `tbl_booking`
+--
+
+INSERT INTO `tbl_booking` (`b_id`, `u_name`, `v_id`, `v_fromdate`, `v_todate`, `v_licenseno`, `v_licenseimg`) VALUES
+(7, 'Hitesh Bhamat', 3, '5/5/2022', '5/9/2022', 'AGB69OP', '');
 
 -- --------------------------------------------------------
 
@@ -67,6 +74,7 @@ CREATE TABLE `tbl_contactus` (
   `c_id` int(11) NOT NULL,
   `c_email` varchar(30) NOT NULL,
   `c_name` varchar(30) NOT NULL,
+  `c_subject` varchar(100) NOT NULL,
   `c_reason` varchar(300) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -74,10 +82,10 @@ CREATE TABLE `tbl_contactus` (
 -- Dumping data for table `tbl_contactus`
 --
 
-INSERT INTO `tbl_contactus` (`c_id`, `c_email`, `c_name`, `c_reason`) VALUES
-(1, 'hitesh@gmail.com', 'Hitesh', 'Rain water flooding in. Need to take care of home.'),
-(2, 'anil@gmail.com', 'Anil', 'The ultimate productivity tool you have been waiti'),
-(3, 'jaydepi@gmail.com', 'Jaydeep', 'Came across a black cat when I stepped out of home.');
+INSERT INTO `tbl_contactus` (`c_id`, `c_email`, `c_name`, `c_subject`, `c_reason`) VALUES
+(1, 'hitesh@gmail.com', 'Hitesh', 'Rain water flooding in.', 'Rain water flooding in. Need to take care of home.'),
+(2, 'anil@gmail.com', 'Anil', 'The ultimate productivity tool', 'The ultimate productivity tool you have been waiti'),
+(3, 'jaydepi@gmail.com', 'Jaydeep', 'Came across a black cat ', 'Came across a black cat when I stepped out of home.');
 
 -- --------------------------------------------------------
 
@@ -125,7 +133,7 @@ CREATE TABLE `tbl_user` (
 
 INSERT INTO `tbl_user` (`u_id`, `u_name`, `u_username`, `u_password`, `u_email`, `u_city`, `u_RegDate`, `u_UpdationDate`) VALUES
 (27, 'Prakash Manat', 'killergopu', '1234', 'pankajwithgopu@gmail.com', 'ahemdabad', '2022-04-12 15:48:06', '2022-04-12 15:48:06'),
-(28, 'Hitesh Bhamat', 'hitubha', '1234', 'hakinep312@yncyjs.com', 'Himmatnagar', '2022-04-15 21:25:21', '2022-04-15 21:25:21');
+(28, 'Hitesh Bhamat', 'hitubha', 'Hitubha@123?', 'hakinep312@yncyjs.com', 'Himmatnagar', '2022-04-15 21:25:21', '2022-04-15 21:25:21');
 
 -- --------------------------------------------------------
 
@@ -157,7 +165,7 @@ CREATE TABLE `tbl_vehicle` (
 
 INSERT INTO `tbl_vehicle` (`v_id`, `user_id`, `v_brand`, `v_name`, `v_city`, `v_overview`, `v_rent`, `v_fueltype`, `v_seatingcapacity`, `v_image1`, `v_image2`, `v_image3`, `v_image4`, `v_regdate`, `v_updationdate`) VALUES
 (1, '28', 'Marutii', 'Swift', 'Idar', 'Very Good Condition ', 1000, 'Gas', 4, 'images\\vehicals\\baleno.jpg', '', '', '', '2022-04-11', '2022-04-11'),
-(3, '28', 'Maruti', 'WagonR', 'Indore', 'Very Good Condition ', 1000, 'Gas', 4, 'images\\vehicals\\wagonr.jpg', '', '', '', '2022-04-13', '2022-04-13');
+(3, '28', 'Maruti', 'WagonR', 'Idar', 'Very Good Condition ', 1000, 'Gas', 4, 'images\\vehicals\\wagonr.jpg', '', '', '', '2022-04-13', '2022-04-13');
 
 --
 -- Indexes for dumped tables
@@ -214,7 +222,7 @@ ALTER TABLE `tbl_admin`
 -- AUTO_INCREMENT for table `tbl_booking`
 --
 ALTER TABLE `tbl_booking`
-  MODIFY `b_id` int(5) NOT NULL AUTO_INCREMENT;
+  MODIFY `b_id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `tbl_contactus`
